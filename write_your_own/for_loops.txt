@@ -1,0 +1,16 @@
+var myArray = [1, 2, 3, 4, 5];
+
+for(var num of myArray){
+    print(num)
+}
+
+
+var img = new SimpleImage("chapel.png");
+print(img)
+
+for(var pixel of img.values()){
+    var newG = 255 - pixel.getGreen();
+    pixel.setGreen(newG);
+}
+
+print(img)

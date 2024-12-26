@@ -1,49 +1,47 @@
-var image = new SimpleImage("astrachan.jpg");
+// var image = new SimpleImage("astrachan.jpg");
 
-// missing code
-var height = image.getHeight();
-for(var pixel of image.values()){
-    if(pixel.getY()>=height-10){
-        pixel.setRed(0);
-        pixel.setGreen(0);
-        pixel.setBlue(0);
-    }
-}
+// // missing code
+// var height = image.getHeight();
+// for(var pixel of image.values()){
+//     if(pixel.getY()>=height-10){
+//         pixel.setRed(0);
+//         pixel.setGreen(0);
+//         pixel.setBlue(0);
+//     }
+// }
 
-print(image)
+// print(image)
 
-function topRightCorner(cornerWidth, cornerHeight, image, red, green, blue){
-    var width = image.getWidth();
-    for(var pixel of image.values()){
-        if(pixel.getY()< cornerHeight){
-            if(pixel.getX() > width - cornerWidth){
-                pixel.setRed(red);
-                pixel.setGreen(green);
-                pixel.setBlue(blue);
-            }
-        }
-    }
-    return image;
-}
+// function topRightCorner(cornerWidth, cornerHeight, image, red, green, blue){
+//     var width = image.getWidth();
+//     for(var pixel of image.values()){
+//         if(pixel.getY()< cornerHeight){
+//             if(pixel.getX() > width - cornerWidth){
+//                 pixel.setRed(red);
+//                 pixel.setGreen(green);
+//                 pixel.setBlue(blue);
+//             }
+//         }
+//     }
+//     return image;
+// }
 
-var picture = new SimpleImage("chapel.png");
-var result = topRightCorner(30, 60, picture, 255, 255, 0);
-print(picture)
+// var picture = new SimpleImage("chapel.png");
+// var result = topRightCorner(30, 60, picture, 255, 255, 0);
+// print(picture)
 
-picture = new SimpleImage("chapel.png");
-var result = topRightCorner(30, 60, picture, 255, 255, 0);
-var result2 = topRightCorner(60, 30, result, 0, 0, 255)
-var result3 = topRightCorner(30, 30, result2, 0, 255, 0)
-print(result3)
+// picture = new SimpleImage("chapel.png");
+// var result = topRightCorner(30, 60, picture, 255, 255, 0);
+// var result2 = topRightCorner(60, 30, result, 0, 0, 255)
+// var result3 = topRightCorner(30, 30, result2, 0, 255, 0)
+// print(result3)
 
 // Green screen
 var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("dinos.png");
-print(fgImage);
-print(bgImage);
 var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
 for(var pixel of fgImage.values()){
-    if(pixel.getGreen() == 255){
+    if(pixel.getGreen() > pixel.getRed() + pixel.getBlue()){
         var x = pixel.getX();
         var y = pixel.getY();
         var bgPixel = bgImage.getPixel(x, y);
@@ -53,5 +51,3 @@ for(var pixel of fgImage.values()){
     }
 }
 print(output);
-
-
